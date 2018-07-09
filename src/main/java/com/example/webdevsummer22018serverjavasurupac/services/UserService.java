@@ -4,6 +4,8 @@ package com.example.webdevsummer22018serverjavasurupac.services;
 
 import java.util.Optional;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.webdevsummer22018serverjavasurupac.models.User;
@@ -66,9 +69,30 @@ public class UserService {
 			usr.setRole(user.getRole());
 			usr.setUsername(user.getUsername());
 			userRepository.save(usr);
-			return usr;
-	}
-	return null;	
+			return userRepository.findById(id).get();
+			}
+		return null;	
+		}
+	
+	
+	public Iterable<User> findUserByUsername(@RequestParam(name="username",required=false) String username)
+	{
+		System.out.println("executing findUserByUsername");
+			return  userRepository.findUserByUserName(username);		
 	}
 	
+	@PostMapping("/api/register")
+	public User register(@RequestBody User user) {
+		
+		Iterable<User> currentUser = findUserByUsername(user.getUsername());
+		if (!currentUser.iterator().hasNext())
+		{
+			System.out.println("executing register for user " + user.getUsername());
+			User registeredUser = createUser(user);
+			System.out.println("registered user# " + registeredUser.getId());
+			return userRepository.findById(registeredUser.getId()).get();
+		}
+		System.out.println("executing register for user " + currentUser.iterator().next().getId());
+		return null;
+	}
 }

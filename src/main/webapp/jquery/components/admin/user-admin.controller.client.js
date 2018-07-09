@@ -127,7 +127,6 @@
         $("#roleFld").val(user.role);
 
     }
-
     function deleteUser(event) {
         //console.log("inside delete user");
         var deleteBtn = $(event.currentTarget);
@@ -138,8 +137,9 @@
             .attr('id');
 
         userService
-            .deleteUser(userId)
-            .then(findAllUsers);
+            .deleteUser(userId);
+
+        findAllUsers;
 
         console.log(userId);
     }
