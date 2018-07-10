@@ -15,14 +15,25 @@
             integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
             crossorigin="anonymous"></script>
 
+    <!--<script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+-->
+
+
     <script src="../../services/user.service.client.js"></script>
     <script src="profile.controller.client.js"></script>
 
-    <!--<script type="text/javascript">
-        $(function () {
-            $('#datetimepicker1').datetimepicker();
-        });
-    </script>-->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $( function() {
+            $( "#dateFld" ).datepicker();
+        } );
+    </script>
 
 </head>
 <body>
@@ -85,9 +96,12 @@
                 Date of Birth
             </label>
             <div class="col-sm-10">
-                <input id="dateFld"
-                       placeholder="mm/dd/yyyy"
-                       class="form-control"/>
+                <div class='input-group date'>
+                    <input type='text' class="form-control" id='dateFld'/>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
             </div>
         </div>
 
