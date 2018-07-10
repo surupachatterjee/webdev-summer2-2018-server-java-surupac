@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+          integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+            integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+            crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker1').datetimepicker();
+        });
+    </script>
+
+</head>
+<body>
+<div class="container">
+
+    <h1>Profile</h1>
+    <form>
+        <div class="form-group row">
+            <label for="usernameFld" class="col-sm-2 col-form-label">
+                Username
+            </label>
+            <div class="col-sm-10">
+                <input id="usernameFld"
+                       placeholder="alice"
+                       class="form-control"/>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="phoneFld" class="col-sm-2 col-form-label">
+                Phone
+            </label>
+            <div class="col-sm-10">
+                <input id="phoneFld"
+                       placeholder="(555) 123-7890"
+                       class="form-control"/>
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <label for="emailFld" class="col-sm-2 col-form-label">
+                Email
+            </label>
+            <div class="col-sm-10">
+                <input id="emailFld"
+                       placeholder="abc@example.com"
+                       class="form-control"/>
+            </div>
+        </div>
+
+
+
+        <div class="form-group row">
+            <label for="roleFld" class="col-sm-2 col-form-label">
+                Role
+            </label>
+            <div class="col-sm-10">
+                <select id="roleFld" class="form-control">
+                    <option value="FACULTY">Faculty</option>
+                    <option value="STUDENT">Student</option>
+                    <option value="ADMIN">Admin</option>
+                </select>
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <label for ="dateFld" class="col-sm-2 col-form-label">
+                Date of Birth
+            </label>
+            <div class="col-sm-10">
+                <input id="dateFld"
+                       placeholder="mm/dd/yyyy"
+                       class="form-control"/>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <button id="updateBtn" class="btn btn-success btn-block">Update</button>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <button id="logoutBtn" class="btn btn-danger btn-block">Logout</button>
+            </div>
+        </div>
+
+
+
+
+    </form>
+</div>
+</body>
+</html>
