@@ -129,7 +129,7 @@ public class UserService {
 		user.setPassword(currentUser.getPassword());
 		System.out.println("User after update  : "+ user.toString()) ;
 		userRepository.save(user);
-		return userRepository.findById(user.getId()).get(); 
+		return findUserById(user.getId()); 
 		
 	}
 	

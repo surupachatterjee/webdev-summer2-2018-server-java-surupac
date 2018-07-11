@@ -19,8 +19,10 @@
         var lastName = $('#lastNameFld').val();
         var phone = $('#phoneFld').val();
         var email =$('#emailFld').val();
-        var date = $('#dateFld').val();
+        var datedb = $('#dateFld').val();
         var role = $('#roleFld').val();
+
+        var dob = new Date(datedb);
 
         currentUser ={
           "username" : username,
@@ -28,7 +30,7 @@
           "lastName" : lastName,
           "phone" : phone,
           "email" : email,
-          "date" : date,
+          "dateOfBirth" : dob,
           "role" : role
         };
 
@@ -58,7 +60,7 @@
         $('#lastNameFld').val(user.lastName);
         $('#phoneFld').val(user.phone);
         $('#emailFld').val(user.email);
-        $('#dateFld').val(user.date);
+        $('#dateFld').val(user.dateOfBirth.substr(0,10));
         $("#roleFld").val(user.role);
 
     }
