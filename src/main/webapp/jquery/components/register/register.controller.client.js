@@ -13,6 +13,12 @@
         e.preventDefault();
         var username = $("#usernameFld").val();
         var password = $("#passwordFld").val();
+        var verifypassword = $("#verifyPasswordFld").val();
+
+        if(password !== verifypassword)
+        {
+            alert("Passwords don't Match");
+        }
 
         var user ={
           "username":username,
