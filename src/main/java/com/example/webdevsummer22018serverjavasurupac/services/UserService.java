@@ -135,6 +135,7 @@ public class UserService {
 	
 	@PostMapping("/api/logout")
 	public User logout(HttpSession session) {
+		System.out.println("Logging out user :" + session.getAttribute("currentUser") );
 		session.invalidate();
 		return null;
 		

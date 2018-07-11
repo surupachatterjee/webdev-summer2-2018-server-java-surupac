@@ -10,7 +10,7 @@ function UserServiceClient() {
     this.updateProfile = updateProfile;
     this.logout = logout;
     this.url = 'https://course-management-stc.herokuapp.com/api';
-    //this.register_url = 'http://localhost:8080/api/register';
+    //this.url = 'http://localhost:8080/api';
     var self = this;
 
     function findAllUsers() {
@@ -106,13 +106,9 @@ function UserServiceClient() {
     
     function logout() {
         return fetch(self.url + "/logout",{
+            method :'post',
             credentials:'include'
-        }).then(function (response) {
-            return response.json();
         });
-
     }
-
-
 }
 

@@ -4,10 +4,7 @@
     var userService = new UserServiceClient();
     var currentUser;
 
-
     function main() {
-
-
         userService.getProfile().then(renderProfile);
         $("#updateBtn").click(updateUser);
         $("#logoutBtn").click(logout);
