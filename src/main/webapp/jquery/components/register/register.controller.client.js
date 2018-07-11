@@ -18,7 +18,7 @@
         if(password !== verifypassword)
         {
             alert("Passwords don't Match");
-        }
+        }else{
 
         var user ={
           "username":username,
@@ -29,7 +29,7 @@
             .then(function (response) {
                 window.location.href = "../profile/profile.template.client.html";
             });
-    }
+    }}
 
 
 })();
