@@ -15,7 +15,11 @@
         var password = $("#passwordFld").val();
         var verifypassword = $("#verifyPasswordFld").val();
 
-        if(password !== verifypassword)
+        if(username === "" || password === "" || verifypassword === "")
+        {
+            alert("All Fields are mandatory");
+        }
+        else if(password !== verifypassword)
         {
             alert("Passwords don't Match");
         }else{
@@ -29,7 +33,8 @@
             .then(function (response) {
                 window.location.href = "../profile/profile.template.client.html";
             });
-    }}
+    }
+    }
 
 
 })();
