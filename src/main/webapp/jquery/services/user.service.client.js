@@ -9,7 +9,7 @@ function UserServiceClient() {
     this.getProfile = getProfile;
     this.updateProfile = updateProfile;
     this.logout = logout;
-    this.url = 'http://localhost:8080/api';
+    this.url = 'https://course-management-stc.herokuapp.com/api';
     //this.register_url = 'http://localhost:8080/api/register';
     var self = this;
 
