@@ -1,7 +1,6 @@
 package com.example.webdevsummer22018serverjavasurupac.services;
 
 
-
 import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
@@ -39,6 +38,7 @@ public class UserService {
 	@DeleteMapping("/api/user/{userId}")
 	public void deleteUser(@PathVariable("userId") int id)
 	{
+		System.out.println("Deleting user with ID :"+ id  );
 		userRepository.deleteById(id);
 	}
 	
@@ -82,7 +82,7 @@ public class UserService {
 	}
 	
 	@PostMapping("/api/register")
-	public User register(@RequestBody User user) {
+	public User register(@RequestBody User user,HttpSession session) {
 		
 		Iterable<User> currentUser = findUserByUsername(user.getUsername());
 		if (!currentUser.iterator().hasNext())
@@ -90,9 +90,55 @@ public class UserService {
 			System.out.println("executing register for user " + user.getUsername());
 			User registeredUser = createUser(user);
 			System.out.println("registered user# " + registeredUser.getId());
+			session.setAttribute("currentUser", registeredUser);
 			return userRepository.findById(registeredUser.getId()).get();
+			//return registeredUser;
 		}
 		System.out.println("executing register for user " + currentUser.iterator().next().getId());
 		return null;
 	}
+	
+	@PostMapping("/api/login")
+	public User login(@RequestBody User user,HttpSession session)
+	{
+		Iterable<User> currentUser = userRepository.findUserByCredentials(user.getUsername(), user.getPassword());
+		if (currentUser.iterator().hasNext()){
+			User curUser = currentUser.iterator().next();
+			System.out.println("Logging In user " + curUser.getId());
+			session.setAttribute("currentUser", curUser);
+			return userRepository.findById(curUser.getId()).get();
+			}
+		return null;
+		}
+	
+	
+	@GetMapping("/api/profile")
+	public User profile(HttpSession session) {
+		User currentUser = (User) session.getAttribute("currentUser");
+		System.out.println("Logging In user " + currentUser.getId());
+		return userRepository.findById(currentUser.getId()).get();
+	}
+	
+	@PutMapping("/api/profile")
+	public User updateProfile(@RequestBody User user, HttpSession session) {
+		User currentUser =  (User) session.getAttribute("currentUser");
+		//currentUser.setFirstName(user.getFirstName());
+		System.out.println("Current User id  : "+ currentUser.getId()) ;
+		System.out.println("User before update  : "+ user.toString());
+		user.setId(currentUser.getId());
+		user.setPassword(currentUser.getPassword());
+		System.out.println("User after update  : "+ user.toString()) ;
+		userRepository.save(user);
+		return userRepository.findById(user.getId()).get(); 
+		
+	}
+	
+	@PostMapping("/api/logout")
+	public User logout(HttpSession session) {
+		session.invalidate();
+		return null;
+		
+	}
+		
+	
 }

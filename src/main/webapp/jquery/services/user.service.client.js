@@ -5,6 +5,10 @@ function UserServiceClient() {
     this.findUserById = findUserById;
     this.updateUser = updateUser;
     this.register = register;
+    this.login = login;
+    this.getProfile = getProfile;
+    this.updateProfile = updateProfile;
+    this.logout = logout;
     this.url = 'http://localhost:8080/api';
     //this.register_url = 'http://localhost:8080/api/register';
     var self = this;
@@ -38,10 +42,8 @@ function UserServiceClient() {
 
     function deleteUser(userId) {
         console.log(self.url + "/user" +"/"+userId);
-            fetch(self.url + "/"+ userId,{
+          return fetch(self.url + "/user" + "/"+ userId,{
                 method:'delete'
-            }).then(function(response){
-                return response.json();
             });
 
     }
@@ -56,12 +58,61 @@ function UserServiceClient() {
     function register(user) {
         return fetch(self.url + "/register", {
             method: 'post',
+            credentials:'include',
             body: JSON.stringify(user),
             headers: {
                 'content-type': 'application/json'
             }
+        }).then(function (response) {
+            return response.json();
         });
     }
+
+    function login(user) {
+        return fetch(self.url + "/login",{
+            method :'post',
+            credentials:'include',
+            body:JSON.stringify(user),
+            headers:{
+                'content-type':'application/json'
+            }
+        }).then(function (response) {
+            return response.json();
+        });
+    }
+
+    function getProfile() {
+        return fetch(self.url + "/profile",{
+            credentials:'include'
+        }).then(function (response) {
+            return response.json();
+        });
+
+    }
+    
+    function updateProfile(user) {
+        return fetch(self.url + "/profile",{
+            method :'put',
+            credentials:'include',
+            body:JSON.stringify(user),
+            headers:{
+                'content-type':'application/json'
+            }
+        }).then(function (response) {
+            return response.json();
+        });
+        
+    }
+    
+    function logout() {
+        return fetch(self.url + "/logout",{
+            credentials:'include'
+        }).then(function (response) {
+            return response.json();
+        });
+
+    }
+
 
 }
 

@@ -3,14 +3,17 @@
     $(main);
     var tbody;
     var template;
+    var currentUserId;
     var userService = new UserServiceClient();
 
     function main() {
         tbody = $("tbody");
         template = $(".template");
+        findAllUsers();
+
         $("#createUser").click(createUser);
         $("#updateUser").click(updateUser);
-        $("#searchUser").click(findAllUsers);
+       // $("#searchUser").click(findAllUsers);
         //$("#deleteUser").click(deleteUser);
 
 
@@ -34,7 +37,7 @@
         var firstName =$("#firstNameFld").val();
         var lastName = $("#lastNameFld").val();
         var role = $("#roleFld").val();
-        var userId = $("#userIdFld").val();
+        //var userId = $("#userIdFld").val();
 
 
         var user ={
@@ -43,7 +46,7 @@
             firstName:firstName,
             lastName:lastName,
             role:role,
-            userId:userId
+            userId:currentUserId
         };
 
         userService
@@ -110,7 +113,8 @@
         userService
             .findUserById(userId)
             .then(renderUser);
-        $("#userIdFld").val(userId);
+        currentUserId = userId;
+        //$("#userIdFld").val(userId);
 
 
 
@@ -119,6 +123,8 @@
     function renderUser(user) {
         console.log(user.username);
         //console.log(user.);
+
+
         console.log($('usernameFld'));
         $('#usernameFld').val(user.username);
         $('#passwordFld').val(user.password);
@@ -137,11 +143,10 @@
             .attr('id');
 
         userService
-            .deleteUser(userId);
+            .deleteUser(userId)
+            .then(findAllUsers);
 
-        findAllUsers;
 
-        console.log(userId);
     }
 
 
