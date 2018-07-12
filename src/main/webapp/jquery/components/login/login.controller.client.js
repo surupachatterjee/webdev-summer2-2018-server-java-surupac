@@ -11,7 +11,8 @@
         
     }
     
-    function login() {
+    function login(e) {
+        e.preventDefault();
         var username = $("#usernameFld").val();
         var password = $("#passwordFld").val();
 
@@ -24,7 +25,7 @@
         userService
             .login(user)
             .then(function (response) {
-                window.location.href = "../profile/profile.template.client.html";
+                    window.location.href = "../profile/profile.template.client.html";
             });
 
 

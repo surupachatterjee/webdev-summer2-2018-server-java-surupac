@@ -9,8 +9,8 @@ function UserServiceClient() {
     this.getProfile = getProfile;
     this.updateProfile = updateProfile;
     this.logout = logout;
-    this.url = 'https://course-management-stc.herokuapp.com/api';
-    //this.url = 'http://localhost:8080/api';
+    //this.url = 'https://course-management-stc.herokuapp.com/api';
+    this.url = 'http://localhost:8080/api';
     var self = this;
 
     function findAllUsers() {
