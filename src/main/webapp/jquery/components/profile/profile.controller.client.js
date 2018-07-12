@@ -19,7 +19,10 @@
         var datedb = $('#dateFld').val();
         var role = $('#roleFld').val();
 
-        var dob = new Date(datedb);
+        var dob ;//= new Date(datedb);
+        if (datedb !== ""){
+            dob = new Date(datedb);
+        }
 
         currentUser ={
           "username" : username,
@@ -55,7 +58,9 @@
         $('#lastNameFld').val(user.lastName);
         $('#phoneFld').val(user.phone);
         $('#emailFld').val(user.email);
-        $('#dateFld').val(user.dateOfBirth.substr(0,10));
+        if (user.dateOfBirth !== ""){
+            $('#dateFld').val(user.dateOfBirth.substr(0,10));
+        }
         $("#roleFld").val(user.role);
 
     }
