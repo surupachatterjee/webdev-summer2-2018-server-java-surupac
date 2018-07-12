@@ -49,20 +49,21 @@
         });
     }
 
-    function renderProfile(user){
+    function renderProfile(user) {
+        if (user !== "") {
 
 
+            $('#usernameFld').val(user.username);
+            $('#firstNameFld').val(user.firstName);
+            $('#lastNameFld').val(user.lastName);
+            $('#phoneFld').val(user.phone);
+            $('#emailFld').val(user.email);
+            if (user.dateOfBirth === null) {
+            } else {
+                $('#dateFld').val(user.dateOfBirth.substr(0, 10));
+            }
+            $("#roleFld").val(user.role);
 
-        $('#usernameFld').val(user.username);
-        $('#firstNameFld').val(user.firstName);
-        $('#lastNameFld').val(user.lastName);
-        $('#phoneFld').val(user.phone);
-        $('#emailFld').val(user.email);
-        if (user.dateOfBirth !== ""){
-            $('#dateFld').val(user.dateOfBirth.substr(0,10));
         }
-        $("#roleFld").val(user.role);
-
     }
-
 })();
