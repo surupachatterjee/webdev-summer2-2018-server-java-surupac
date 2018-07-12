@@ -31,8 +31,6 @@
           "role" : role
         };
 
-        console.log(currentUser.date);
-
         userService.updateProfile(currentUser)
             .then(function(response){
                 alert("Profile Update Successful");
