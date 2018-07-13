@@ -25,7 +25,12 @@
         userService
             .login(user)
             .then(function (response) {
+                if (response.status == '404'){
+                    alert("Incorrect Username or Password ");
+                }
+                else{
                     window.location.href = "../profile/profile.template.client.html";
+                }
             });
 
 

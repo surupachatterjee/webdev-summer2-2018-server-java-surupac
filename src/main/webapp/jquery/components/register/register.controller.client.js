@@ -31,7 +31,13 @@
 
         userService.register(user)
             .then(function (response) {
-                window.location.href = "../profile/profile.template.client.html";
+                if (response.status == '409'){
+                    alert("Username already taken");
+                }
+                else{
+                    window.location.href = "../profile/profile.template.client.html";
+                }
+
             });
     }
     }

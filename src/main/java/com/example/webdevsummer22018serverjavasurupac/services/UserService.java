@@ -94,8 +94,12 @@ public class UserService {
 			return userRepository.findById(registeredUser.getId()).get();
 			//return registeredUser;
 		}
+		else {
 		System.out.println("executing register for user " + currentUser.iterator().next().getId());
-		return null;
+		UsernameAlreadyTakenException usrnmtaken =
+				new UsernameAlreadyTakenException(user.getUsername());
+				throw usrnmtaken;
+	}
 	}
 	
 	@PostMapping("/api/login")
@@ -108,7 +112,11 @@ public class UserService {
 			session.setAttribute("currentUser", curUser);
 			return userRepository.findById(curUser.getId()).get();
 			}
-		return null;
+		else {
+			UserNotFoundException unfe = 
+					new UserNotFoundException(user.getUsername());
+			throw unfe;
+			}
 		}
 	
 	
@@ -127,6 +135,7 @@ public class UserService {
 		System.out.println("User before update  : "+ user.toString());
 		user.setId(currentUser.getId());
 		user.setPassword(currentUser.getPassword());
+		user.setUsername(currentUser.getUsername());
 		System.out.println("User after update  : "+ user.toString()) ;
 		userRepository.save(user);
 		//return findUserById(user.getId()); 

@@ -77,7 +77,7 @@ function UserServiceClient() {
                 'content-type':'application/json'
             }
         }).then(function (response) {
-            return response.json();
+                return response.json();
         });
     }
 
