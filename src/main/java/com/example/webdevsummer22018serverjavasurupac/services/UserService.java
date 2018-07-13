@@ -123,7 +123,7 @@ public class UserService {
 	public User updateProfile(@RequestBody User user, HttpSession session) {
 		User currentUser =  (User) session.getAttribute("currentUser");
 		//currentUser.setFirstName(user.getFirstName());
-		System.out.println("Current User id  : "+ currentUser.getId()) ;
+		System.out.println("Current User  : "+ currentUser.getId()+ ":" + currentUser.toString());
 		System.out.println("User before update  : "+ user.toString());
 		user.setId(currentUser.getId());
 		user.setPassword(currentUser.getPassword());

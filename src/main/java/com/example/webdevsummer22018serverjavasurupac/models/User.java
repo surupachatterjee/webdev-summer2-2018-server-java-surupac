@@ -83,14 +83,19 @@ public class User {
 	@Override
 	public String toString() {
 		
-		return this.firstName +":"
+		
+		String user = this.firstName +":"
 				+this.lastName+":"
 				+this.email+":"
 				+this.phone+":"
 				+this.password+":"
 				+this.role+":"
-				+this.username ;
+				+this.username 
+				+this.id;
 				//+this.dateOfBirth.toString();
+		if (this.dateOfBirth != null)
+			user = user.concat(":").concat(this.dateOfBirth.toString());
+		return user;
 	}
 	
 	
