@@ -1,10 +1,13 @@
 package com.example.webdevsummer22018serverjavasurupac.models;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -19,6 +22,9 @@ public class Module {
 	@ManyToOne
 	@JsonIgnore
 	private Course course;
+	
+	@OneToMany(mappedBy="module")
+	private List<Lesson> lessons;
 	
 	public int getId() {
 		return id;
@@ -38,5 +44,12 @@ public class Module {
 	public void setCourse(Course course) {
 		this.course = course;
 	}
+	public List<Lesson> getLessons() {
+		return lessons;
+	}
+	public void setLessons(List<Lesson> lessons) {
+		this.lessons = lessons;
+	}
+	
 
 }
