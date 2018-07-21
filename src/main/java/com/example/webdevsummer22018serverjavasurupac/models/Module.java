@@ -2,6 +2,7 @@ package com.example.webdevsummer22018serverjavasurupac.models;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,7 +24,9 @@ public class Module {
 	@JsonIgnore
 	private Course course;
 	
-	@OneToMany(mappedBy="module")
+	@OneToMany(mappedBy="module",
+			cascade = CascadeType.ALL,
+			orphanRemoval = true)
 	private List<Lesson> lessons;
 	
 	public int getId() {
