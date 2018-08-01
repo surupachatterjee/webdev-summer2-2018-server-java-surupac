@@ -17,6 +17,7 @@ import com.example.webdevsummer22018serverjavasurupac.repositories.CourseReposit
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
+
 public class CourseServices {
 	
 	@Autowired
