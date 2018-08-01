@@ -27,7 +27,8 @@ public class Course {
 	private Date modified;
 	
 	@OneToMany(mappedBy="course",
-			cascade = CascadeType.ALL, orphanRemoval = true)
+			cascade = CascadeType.ALL, 
+			orphanRemoval = true)
 	@JsonIgnore
 	private List<Module> modules;
 	
